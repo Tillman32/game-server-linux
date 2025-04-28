@@ -6,6 +6,19 @@
 # SS_VALIDATE_DOCKER_INSTALL
 # SS_USE_EXISTING_DOCKER_INSTALL
 
+# Check if .env file exists
+if [ -f ".env" ]; then
+    echo ".env file found, loading environment variables..."
+    # Load environment variables from .env file
+    export $(grep -v '^#' .env | xargs)
+else
+    echo ".env file not found, using default values..."
+    SS_STEAMCMD_USER="steamcmd"
+    SS_STEAM_SERVER_PATH="/steam/servers"
+    SS_VALIDATE_DOCKER_INSTALL=true
+    SS_USE_EXISTING_DOCKER_INSTALL=false
+fi
+
 # Check if docker is already installed
 if ! command -v docker &> /dev/null
 then
@@ -23,11 +36,13 @@ else
 fi
 
 # Create steamcmd user and directory
+echo "Creating steamcmd user and directory..."
 sudo useradd -m $SS_STEAMCMD_USER
 sudo mkdir -p /steam/servers
 sudo chown -R $SS_STEAMCMD_USER:$SS_STEAMCMD_USER /steam/servers
 
 # Create Portainer container
+echo "Creating Portainer container..."
 docker volume create portainer_data
 docker run -d \
     --name=portainer \
