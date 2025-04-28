@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   7days-server:
     image: cm2network/steamcmd
@@ -7,9 +6,9 @@ services:
       - "27015:27015/udp"
       - "27015:27015/tcp"
     environment:
-      - GAMEPARAMS="+force_install_dir /data +login anonymous +app_update 294420 +quit"
       - PUID=1000
       - PGID=1000
     volumes:
       - ./servers/7days:/home/steam/serverfiles
     restart: unless-stopped
+    command: steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 +quit
