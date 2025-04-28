@@ -36,7 +36,7 @@ fi
 echo "Creating steamcmd user and directory..."
 sudo useradd -m $SS_STEAMCMD_USER
 sudo mkdir -p /steam/servers
-sudo chown -R $SS_STEAMCMD_USER:$SS_STEAMCMD_USER /steam/servers
+sudo chown -R $SS_STEAMCMD_USER:$SS_STEAMCMD_USER /steam
 
 # Create Portainer container
 echo "Creating Portainer container..."
