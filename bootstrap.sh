@@ -6,17 +6,17 @@
 # SS_VALIDATE_DOCKER_INSTALL
 # SS_USE_EXISTING_DOCKER_INSTALL
 
+# Default values
+SS_STEAMCMD_USER="steamcmd"
+SS_STEAM_SERVER_PATH="/steam/servers"
+SS_VALIDATE_DOCKER_INSTALL=true
+SS_USE_EXISTING_DOCKER_INSTALL=false
+
 # Check if .env file exists
 if [ -f ".env" ]; then
     echo ".env file found, loading environment variables..."
-    # Load environment variables from .env file
+    # Load environment variables from .env file, overwriting defaults
     export $(grep -v '^#' .env | xargs)
-else
-    echo ".env file not found, using default values..."
-    SS_STEAMCMD_USER="steamcmd"
-    SS_STEAM_SERVER_PATH="/steam/servers"
-    SS_VALIDATE_DOCKER_INSTALL=true
-    SS_USE_EXISTING_DOCKER_INSTALL=false
 fi
 
 # Check if docker is already installed
