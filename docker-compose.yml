@@ -11,4 +11,4 @@ services:
     volumes:
       - ./servers/7days:/home/steam/serverfiles
     restart: unless-stopped
-    command: steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 +quit
+    command: +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 +quit
