@@ -26,13 +26,10 @@ then
     install_docker
 else
     echo "Docker is already installed..."
-    if [ "$SS_USE_EXISTING_DOCKER_INSTALL" = true ]; then
-        echo "Using existing Docker installation."
-    else
+    if [ "$SS_USE_EXISTING_DOCKER_INSTALL" = !true ]; then
         echo "Please remove any previous Docker installations before running this script."
         exit 1
     fi
-    exit 1
 fi
 
 # Create steamcmd user and directory
