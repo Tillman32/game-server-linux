@@ -47,14 +47,3 @@ services:
         soft: "10240"
         hard: "10240"
     restart: unless-stopped # INFO - NEVER USE WITH START_MODE=4 or START_MODE=0
-  minecraft-bedrock-server:
-    image: itzg/minecraft-bedrock-server
-    container_name: minecraft-bedrock-server
-    environment:
-      - EULA=TRUE
-    ports:
-      - "19132:19132/udp" # Default game ports
-    volumes:
-      - /servers/minecraft-bedrock:/data # Minecraft Bedrock world saves
-    stdin_open: true
-    tty: true

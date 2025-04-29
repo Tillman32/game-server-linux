@@ -1,0 +1,12 @@
+  services:
+    minecraft-bedrock-server:
+      image: itzg/minecraft-bedrock-server
+      container_name: minecraft-bedrock-server
+      environment:
+        - EULA=TRUE
+      ports:
+        - "19132:19132/udp" # Default game ports
+      volumes:
+        - /servers/minecraft-bedrock:/data # Minecraft Bedrock world saves
+      stdin_open: true
+      tty: true
