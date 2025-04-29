@@ -24,7 +24,7 @@ services:
       - CPM_UPDATE=NO                # Optional - Update CPM before server start
       - BEPINEX=NO                   # Optional - BepInEx
       - BEPINEX_UPDATE=NO            # Optional - Update BepInEx before server start
-      - BACKUP=NO                    # Optional - Backup server
+      - BACKUP=YES                  # Optional - Backup server
       - BACKUP_HOUR=5                # Optional - Backup hour 0-23
       - BACKUP_MAX=7                 # Optional - Max backups to keep
       - MONITOR=NO                   # Optional - Keeps server up if crash
