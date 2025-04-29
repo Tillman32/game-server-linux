@@ -29,9 +29,9 @@ services:
       - BACKUP_MAX=7                 # Optional - Max backups to keep
       - MONITOR=NO                   # Optional - Keeps server up if crash
     volumes:
-      - /steam/servers/7DaysToDie:/home/sdtdserver/
-      #- /steam/servers/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/     # 7 Days To Die world saves
-      #- /path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver # LGSM config folder
+      #- /steam/servers/7DaysToDie:/home/sdtdserver/
+      - /steam/servers/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/     # 7 Days To Die world saves
+      - /steam/servers/7DaysToDie/lgsm:/home/sdtdserver/lgsm/config-lgsm/sdtdserver # LGSM config folder
       #- /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/                # Optional - serverfiles folder
       #- /path/to/folder/log:/home/sdtdserver/log/                                # Optional - Logs folder
       #- /path/to/folder/backups:/home/sdtdserver/lgsm/backup/                    # Optional - If BACKUP=NO, backups folder
