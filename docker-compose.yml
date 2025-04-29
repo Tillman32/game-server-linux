@@ -3,11 +3,11 @@ services:
     image: vinanrra/7dtd-server
     container_name: 7days-server
     environment:
-      - LINUXGSM_VERSION=v24.3.4      # Change to use another version of LinuxGSM
-      - START_MODE=1                 # Change between START MODES
-      - VERSION=stable               # Change between 7 days to die versions
-      - PUID=1000                    # Remember to use same as your user
-      - PGID=1000                    # Remember to use same as your user
+      - LINUXGSM_VERSION=v24.3.4       # Change to use another version of LinuxGSM
+      - START_MODE=1                   # Change between START MODES
+      - VERSION=stable                 # Change between 7 days to die versions
+      - PUID=1000                      # Remember to use same as your user
+      - PGID=1000                      # Remember to use same as your user
       - TimeZone=America/Phoenix       # Optional - Change Timezone
       - TEST_ALERT=NO                # Optional - Send a test alert
       - UPDATE_MODS=NO               # Optional - This will allow mods to be update on start, each mod also need to have XXXX_UPDATE=YES to update on start
@@ -30,11 +30,11 @@ services:
       - MONITOR=NO                   # Optional - Keeps server up if crash
     volumes:
       #- /steam/servers/7DaysToDie:/home/sdtdserver/
-      - /steam/servers/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/     # 7 Days To Die world saves
+      - /steam/servers/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/         # 7 Days To Die world saves
       - /steam/servers/7DaysToDie/lgsm:/home/sdtdserver/lgsm/config-lgsm/sdtdserver # LGSM config folder
-      #- /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/                # Optional - serverfiles folder
-      #- /path/to/folder/log:/home/sdtdserver/log/                                # Optional - Logs folder
-      #- /path/to/folder/backups:/home/sdtdserver/lgsm/backup/                    # Optional - If BACKUP=NO, backups folder
+      - /steam/servers/7DaysToDie/serverfiles:/home/sdtdserver/serverfiles/         # Optional - serverfiles folder
+      - /steam/servers/7DaysToDie/log:/home/sdtdserver/log/                         # Optional - Logs folder
+      - /steam/servers/7DaysToDie/lgsm/backups:/home/sdtdserver/lgsm/backup/        # Optional - If BACKUP=NO, backups folder
     ports:
       - 26900:26900/tcp # Default game ports
       - 26900:26900/udp # Default game ports
@@ -49,20 +49,3 @@ services:
         hard: "10240"
 
     restart: unless-stopped # INFO - NEVER USE WITH START_MODE=4 or START_MODE=0
-    # image: cm2network/steamcmd
-    # container_name: 7days-server
-    # ports:
-    #   - "27015:27015/udp"
-    #   - "27015:27015/tcp"
-    # environment:
-    #   - PUID=1000
-    #   - PGID=1000
-    # volumes:
-    #   - 7days-server:/home/steam/serverfiles
-    # #restart: unless-stopped
-    # command: >
-    #   ./steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 &&
-    #   cd /home/steam/serverfiles &&
-    #   ls -la
-    # stdin_open: true
-    # tty: true
