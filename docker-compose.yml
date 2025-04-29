@@ -14,7 +14,7 @@ services:
       - 7days-server:/home/steam/serverfiles
     #restart: unless-stopped
     command: >
-      ./steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 +quit &&
+      ./steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 &&
       cd /home/steam/serverfiles &&
       ls -la
     stdin_open: true
