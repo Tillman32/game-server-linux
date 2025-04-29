@@ -2,20 +2,25 @@ volumes:
   7days-server:
 services:
   7days-server:
-    image: cm2network/steamcmd
+    image: didstopia/7dtd-server
     container_name: 7days-server
-    ports:
-      - "27015:27015/udp"
-      - "27015:27015/tcp"
-    environment:
-      - PUID=1000
-      - PGID=1000
     volumes:
-      - 7days-server:/home/steam/serverfiles
-    #restart: unless-stopped
-    command: >
-      ./steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 &&
-      cd /home/steam/serverfiles &&
-      ls -la
-    stdin_open: true
-    tty: true
+      - 7days-server:/steamcmd/7dtd
+      - 7days-server:/app/.local/share/7DaysToDie
+    # image: cm2network/steamcmd
+    # container_name: 7days-server
+    # ports:
+    #   - "27015:27015/udp"
+    #   - "27015:27015/tcp"
+    # environment:
+    #   - PUID=1000
+    #   - PGID=1000
+    # volumes:
+    #   - 7days-server:/home/steam/serverfiles
+    # #restart: unless-stopped
+    # command: >
+    #   ./steamcmd.sh +force_install_dir /home/steam/serverfiles +login anonymous +app_update 294420 &&
+    #   cd /home/steam/serverfiles &&
+    #   ls -la
+    # stdin_open: true
+    # tty: true
